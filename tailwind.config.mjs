@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage:{
+        'login': "url('/assets/pics/subtle.png')",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
