@@ -2,7 +2,9 @@ import React from 'react'
 
 const Landing = () => {
   return (
-    <div>Landing</div>
+    <div>
+        سیبا شاپ سینا موسوی (بدون صبا)
+    </div>
   )
 }
 
