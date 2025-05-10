@@ -3,7 +3,7 @@ import React from 'react'
 const Landing = () => {
   return (
     <div>
-        سیبا شاپ سینا موسوی (بدون صبا)
+      عسل قهوه داریم...!
     </div>
   )
 }

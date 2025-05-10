@@ -2,4 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@layer components {
+    .nav-hover {
+      @apply hover:text-gray-50 transition-all duration-300  hover:scale-105;
+    }
+  }
