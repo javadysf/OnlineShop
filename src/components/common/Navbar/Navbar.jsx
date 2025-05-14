@@ -17,6 +17,9 @@ const Navbar = () => {
               درباره ما
             </Link>
           </li>
+          <Link className="nav-hover" href={"./shop"}>
+            <li>خرید</li>
+          </Link>
           <Link className="nav-hover" href={"./login"}>
             <li> ثبت نام / ورود</li>
           </Link>
