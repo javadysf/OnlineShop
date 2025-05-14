@@ -26,9 +26,9 @@ export default function RootLayout({ children }) {
       >
         <div className="flex flex-col">
         <Navbar/>
-        <span className="flex h-screen p-2 gap-4">
+        <span className="flex h-screen p-1 gap-2">
         <MainSideBar/>
-        <span className="bg-sky-200 w-full p-4 rounded-lg">
+        <span className="bg-sky-200 w-full p-2 rounded-lg">
 
         {children}
         </span>
