@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
         <Navbar/>
         <span className="flex h-screen p-1 gap-2">
         <MainSideBar/>
-        <span className="bg-sky-200 w-full p-2 rounded-lg">
+        <span className="bg-sky-100 w-full p-2 rounded-lg h-fit">
 
         {children}
         </span>

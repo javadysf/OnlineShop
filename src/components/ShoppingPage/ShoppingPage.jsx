@@ -1,17 +1,13 @@
 import React from 'react'
 import ItemsCard from './ItemsCard/ItemsCard'
 
-const ShoppingPage = () => {
+const ShoppingPage = ({products}) => {
   return (
-    <div className='flex flex-wrap gap-2'>
-        <ItemsCard/>
-        <ItemsCard/>
-        <ItemsCard/>
-        <ItemsCard/>
-        <ItemsCard/>
-        <ItemsCard/>
-        <ItemsCard/>
-        <ItemsCard/>
+    <div className='flex p-4 flex-wrap gap-4'>
+      {products.map((product)=>
+        <ItemsCard key={product.id} product = {product} />
+      )}
+
     </div>
   )
 }

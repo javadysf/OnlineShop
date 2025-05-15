@@ -1,12 +1,15 @@
 import ShoppingPage from '@/components/ShoppingPage/ShoppingPage'
+import axios from 'axios'
 import React from 'react'
 
-const Shop = () => {
+const Shop = async () => {
+  const data = await axios.get("https://fakestoreapi.com/products")
+  console.log(data.data);
   return (
     <div>
-        <ShoppingPage/>
+        <ShoppingPage products={data.data}/>
     </div>
   )
 }
 
-export default Shop
+export default Shop;
