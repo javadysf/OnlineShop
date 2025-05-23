@@ -26,7 +26,7 @@ const ItemsCard = ({product}) => {
           <div className="mt-4 flex items-center justify-between">
             <span className="text-green-600 font-semibold text-lg">{product.price} تومان</span>
             <Link
-              href={`/products/${product.id}`}
+              href={`/shop/${product.id}`}
               className="text-blue-600 text-sm hover:underline transition"
             >
               مشاهده جزئیات

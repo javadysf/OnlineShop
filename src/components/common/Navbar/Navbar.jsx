@@ -17,11 +17,14 @@ const Navbar = () => {
               درباره ما
             </Link>
           </li>
-          <Link className="nav-hover" href={"./shop"}>
+          <Link className="nav-hover" href={"/shop"}>
             <li>خرید</li>
           </Link>
-          <Link className="nav-hover" href={"./login"}>
+          <Link className="nav-hover" href={"/login"}>
             <li> ثبت نام / ورود</li>
+          </Link>
+          <Link className="nav-hover" href={"/cart"}>
+            <li> سبد خرید</li>
           </Link>
         </ul>
       </nav>
