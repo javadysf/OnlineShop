@@ -8,7 +8,11 @@
     }
   }
 
-
+  @font-face {
+    font-family: 'b-nazanin';
+    src: url('/Fonts/B-NAZANIN.TTF') format('truetype');
+  
+  }
 
 @layer base {
   :root {

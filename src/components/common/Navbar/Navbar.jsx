@@ -1,11 +1,12 @@
 import Link from "next/link";
 import React from "react";
+import CartButton from "../CartButton/CartButton";
 
 const Navbar = () => {
   return (
-    <div dir="rtl" className="bg-blue-400 p-4 rounded-b-lg flex">
-      <nav className="flex ">
-        <ul className="flex gap-6">
+    <div dir="rtl" className=" bg-blue-400 p-4 rounded-b-lg flex">
+      <nav className="flex w-full justify-between ">
+        <ul className="flex text-xl font-medium gap-6">
           <Link className="nav-hover" href={"./"}>
             <li> خانه</li>
           </Link>
@@ -23,9 +24,9 @@ const Navbar = () => {
           <Link className="nav-hover" href={"/login"}>
             <li> ثبت نام / ورود</li>
           </Link>
-          <Link className="nav-hover" href={"/cart"}>
-            <li> سبد خرید</li>
-          </Link>
+        </ul>
+        <ul>
+            <CartButton/>
         </ul>
       </nav>
     </div>

@@ -24,10 +24,10 @@ export default function RootLayout({ children }) {
       <body
         className={`antialiased`}
       >
-        <div className="flex flex-col">
+        <div className="flex font-nazanin flex-col">
         <Navbar/>
         <span className="flex h-screen p-1 gap-2">
-        <MainSideBar/>
+        {/* <MainSideBar/> */}
         <span className="bg-sky-100 w-full p-2 rounded-lg h-fit">
 
         {children}
