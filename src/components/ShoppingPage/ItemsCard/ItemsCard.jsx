@@ -4,7 +4,7 @@ import { ShoppingCart } from "lucide-react";
 
 const ItemsCard = ({product}) => {
       return (
-        <div className="h-[450px] w-[350px] group bg-white rounded-2xl shadow-md hover:shadow-xl border border-gray-100 transition duration-300 overflow-hidden relative">
+        <div className="h-[480px] w-[350px] group bg-white rounded-2xl shadow-md hover:shadow-xl border border-gray-100 transition duration-300 overflow-hidden relative">
         {/* تصویر */}
         <div className="overflow-hidden rounded-t-2xl">
           <Image
