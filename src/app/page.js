@@ -1,9 +1,11 @@
 import Landing from "@/components/Landing/Landing"
+import axios from "axios"
 
-const page = () => {
+const page = async() => {
+  const data = await axios.get("https://fakestoreapi.com/products")
   return (
     <>
-    <Landing/> 
+    <Landing products={data.data}/> 
     </>
   )
 }
