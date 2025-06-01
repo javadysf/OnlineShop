@@ -1,15 +1,88 @@
-import React from 'react'
-import ItemsCard from './ItemsCard/ItemsCard'
+'use client';
 
-const ShoppingPage = ({products}) => {
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import ItemsCard from './ItemsCard/ItemsCard';
+
+
+
+export default function ProductPage({ products }) {
+  const [filtered, setFiltered] = useState(products);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortOption, setSortOption] = useState('newest');
+
+  useEffect(() => {
+    const cats = [...new Set(products.map((p) => p.category))];
+    setCategories(cats);
+  }, [products]);
+
+  useEffect(() => {
+    let list = [...products];
+
+    if (selectedCategory) {
+      list = list.filter((p) => p.category === selectedCategory);
+    }
+    if (searchTerm) {
+      list = list.filter((p) =>
+        p.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    if (sortOption === 'price_low') {
+      list.sort((a, b) => a.price - b.price);
+    } else if (sortOption === 'price_high') {
+      list.sort((a, b) => b.price - a.price);
+    } else {
+      list.sort((a, b) => Number(b.id) - Number(a.id)); // مرتب‌سازی بر اساس id عددی
+    }
+    setFiltered(list);
+  }, [searchTerm, selectedCategory, sortOption, products]);
+
   return (
-    <div className='flex p-4 flex-wrap gap-4'>
-      {products.map((product)=>
-        <ItemsCard key={product.id} product = {product} />
-      )}
+    <main className="max-w-7xl mx-auto p-4 space-y-6 rtl bg-gradient-to-br from-blue-50 via-white to-yellow-50 min-h-screen">
+      {/* فیلتر و جستجو */}
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+        <Input
+          placeholder="جستجو در محصولات..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full md:w-1/3 text-right"
+        />
 
-    </div>
-  )
+        <select
+          className="px-4 py-2 rounded-md border text-right"
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+        >
+          <option value="newest">جدیدترین</option>
+          <option value="price_low">ارزان‌ترین</option>
+          <option value="price_high">گران‌ترین</option>
+        </select>
+      </div>
+
+      {/* دسته‌بندی‌ها */}
+      <div className="flex flex-wrap gap-2 justify-start md:justify-end">
+        {categories.map((cat) => (
+          <Button
+            key={cat}
+            variant={selectedCategory === cat ? 'default' : 'outline'}
+            onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
+          >
+            {cat}
+          </Button>
+        ))}
+      </div>
+
+      {/* نمایش محصولات */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {filtered.map((product,index) => (
+      <ItemsCard product={product} key={index}  />
+        ))}
+      </div>
+    </main>
+  );
 }
-
-export default ShoppingPage

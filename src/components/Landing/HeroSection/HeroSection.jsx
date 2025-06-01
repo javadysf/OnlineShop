@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection = () => {
     
@@ -31,9 +32,11 @@ const HeroSection = () => {
         <p className="text-lg text-gray-800">
           فروشگاه ما جاییه برای لبخند، کیفیت و حس خوب خرید خانوادگی.
         </p>
+        <Link href={"/shop"}>
         <Button className="bg-yellow-400 text-sky-900 text-2xl hover:bg-yellow-500 font-semibold px-6 py-8 rounded-xl shadow">
           شروع خرید
         </Button>
+        </Link>
       </div>
 
       {/* Right Side: Carousel */}

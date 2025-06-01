@@ -6,9 +6,9 @@ const Shop = async () => {
   const data = await axios.get("https://fakestoreapi.com/products")
   console.log(data.data);
   return (
-    <div>
+    <>
         <ShoppingPage products={data.data}/>
-    </div>
+    </>
   )
 }
 

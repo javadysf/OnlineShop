@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import CartButton from '../CartButton/CartButton';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,8 +32,7 @@ export default function Navbar() {
 
         {/* آیکون سبد خرید */}
         <div className="relative hidden md:block">
-          <Link href="/cart" className="text-2xl">🛒</Link>
-          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">2</span>
+          <CartButton/>
         </div>
       </div>
 
@@ -49,8 +49,9 @@ export default function Navbar() {
           <li><Link href="/products" onClick={() => setMenuOpen(false)}>خرید</Link></li>
           <li><Link href="/login" onClick={() => setMenuOpen(false)}>ثبت نام / ورود</Link></li>
           <li className="flex items-center space-x-2 rtl:space-x-reverse">
-            <Link href="/cart" className="text-xl">🛒</Link>
-            <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">2</span>
+          
+            <CartButton/>
+        
           </li>
         </ul>
       </div>
