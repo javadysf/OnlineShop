@@ -24,9 +24,9 @@ export default function Navbar() {
         {/* منو دسکتاپ */}
         <ul className="hidden md:flex space-x-6 text-gray-700 text-lg font-medium rtl:space-x-reverse">
           <li className="hover:text-sky-600 transition"><Link href="/">خانه</Link></li>
-          <li className="hover:text-sky-600 transition"><Link href="/contact">تماس با ما</Link></li>
-          <li className="hover:text-sky-600 transition"><Link href="/about">درباره ما</Link></li>
-          <li className="hover:text-sky-600 transition"><Link href="/products">خرید</Link></li>
+          <li className="hover:text-sky-600 transition"><Link href="/ContactUs">تماس با ما</Link></li>
+          <li className="hover:text-sky-600 transition"><Link href="/AboutUs">درباره ما</Link></li>
+          <li className="hover:text-sky-600 transition"><Link href="/shop">خرید</Link></li>
           <li className="hover:text-sky-600 transition"><Link href="/login">ثبت نام / ورود</Link></li>
         </ul>
 

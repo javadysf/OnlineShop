@@ -20,9 +20,9 @@ const HeroSection = () => {
       {/* Left Side: Image + Text */}
       <div className="flex-1 text-center md:text-left space-y-6">
         <Image
-          src="/assets/pics/Hero.png" // تصویر اصلی که تولید کردیم
+          src="/assets/pics/Hero.jpg" // تصویر اصلی که تولید کردیم
           alt="Happy grandfather and child"
-          width={400}
+          width={500}
           height={400}
           className="mx-auto md:mx-0 rounded-xl shadow-lg"
         />
