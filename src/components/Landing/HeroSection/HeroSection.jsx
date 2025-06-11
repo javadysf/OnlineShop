@@ -14,34 +14,34 @@ const HeroSection = () => {
       ];
       const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <section className="bg-gradient-to-r from-sky-200 via-yellow-100 to-sky-100 py-6 px-6 md:px-16">
-    <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row max-lg:flex-col items-center gap-12">
+    <section className="bg-white dark:bg-gray-900 py-6 px-6 md:px-16">
+    <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row max-lg:flex-col items-center gap-10">
       
       {/* Left Side: Image + Text */}
-      <div className="flex-1 text-center md:text-left space-y-6">
+      <div className="flex-1 text-center md:text-left space-y-4">
         <Image
           src="/assets/pics/Hero.jpg" // تصویر اصلی که تولید کردیم
           alt="Happy grandfather and child"
           width={500}
-          height={400}
-          className="mx-auto md:mx-0 rounded-xl shadow-lg"
+          height={30}
+          className="mx-auto md:mx-0 rounded-xl shadow-lg dark:shadow-gray-800"
         />
-        <h1 className="text-4xl md:text-5xl font-bold text-sky-900">
-          خریدی شاد با عزیزانت!
-        </h1>
-        <p className="text-lg text-gray-800">
-          فروشگاه ما جاییه برای لبخند، کیفیت و حس خوب خرید خانوادگی.
-        </p>
+        <div className="flex w-full justify-evenly items-center">
+
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-500 dark:text-white">
+با لذت خرید کن!        </h1>
+      
         <Link href={"/shop"}>
-        <Button className="bg-yellow-400 text-sky-900 text-2xl hover:bg-yellow-500 font-semibold px-6 py-8 rounded-xl shadow">
+        <Button className="bg-orange-400 hover:bg-orange-300/90 text-white text-2xl font-semibold px-6 py-8 rounded-xl shadow dark:shadow-gray-800">
           شروع خرید
         </Button>
         </Link>
+        </div>
       </div>
 
       {/* Right Side: Carousel */}
       <div className="flex-1 max-lg:w-full ">
-        <div className="relative w-full h-80 rounded-xl overflow-hidden shadow-lg">
+        <div className="relative w-full h-80 rounded-xl overflow-hidden shadow-lg dark:shadow-gray-800">
           <Image
             src={carouselImages[activeIndex]}
             alt={`Slide ${activeIndex}`}
@@ -58,10 +58,10 @@ const HeroSection = () => {
               key={index}
               onClick={() => setActiveIndex(index)}
               className={clsx(
-                "w-4 h-4 rounded-full border-2 border-sky-400 transition-all",
+                "w-4 h-4 rounded-full border-2 transition-all",
                 activeIndex === index
-                  ? "bg-yellow-400 scale-110"
-                  : "bg-white hover:bg-yellow-200"
+                  ? "bg-primary border-primary scale-110"
+                  : "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
               )}
             />
           ))}

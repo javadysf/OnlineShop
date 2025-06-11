@@ -11,14 +11,15 @@ const PasswordInput = () => {
       setInputType("password");
     }
   };
+
   return (
     <span className="flex w-full relative">
       <input
         onChange={(e) => passwordHandler(e)}
         value={PassValue}
         type={InputType}
-        className="p-4 w-full rounded-2xl"
-        placeholder="password"
+        className="p-4 w-full rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
+        placeholder="رمز عبور"
       />
       {InputType && PassValue ? (
         <>
@@ -29,7 +30,7 @@ const PasswordInput = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6 absolute right-4 top-4 cursor-pointer "
+            className="size-6 absolute right-4 top-4 cursor-pointer text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
           >
             <path
               strokeLinecap="round"
@@ -50,7 +51,7 @@ const PasswordInput = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6 absolute right-4 top-4 cursor-pointer "
+              className="size-6 absolute right-4 top-4 cursor-pointer text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
             >
               <path
                 strokeLinecap="round"

@@ -1,57 +1,99 @@
 "use client";
+import axios from "axios";
 import { motion } from "framer-motion";
+import { Users, Award, Heart, ShoppingBag } from "lucide-react";
 
 export default function AboutUs() {
+  const details = {"id":2,"title":"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops","price":109.95,"description":"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday","category":"men's clothing","image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg","rating":{"rate":3.9,"count":120}}
+  const CreateQuestions = async ( details) => {
+    try {
+      const result = await axios.post(
+        "http://localhost:5000/api/products",
+        details,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(result);
+      return result.data;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  };
   return (
-    <div className="bg-gradient-to-br from-sky-100 to-yellow-50 min-h-screen py-16 px-6 md:px-20 text-gray-800">
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="text-4xl md:text-5xl font-bold text-center text-yellow-500 mb-10"
-      >
-        درباره ما
-      </motion.h1>
+    <motion.div
+      className="min-h-screen bg-white dark:bg-gray-900 p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-8 md:p-12">
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-primary dark:text-primary mb-8">درباره ما</h1>
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-        className="bg-white/80 shadow-xl rounded-3xl p-6 md:p-10 backdrop-blur-md"
-      >
-        <h2 className="text-2xl font-semibold text-sky-600 mb-4">ما که هستیم؟</h2>
-        <p className="text-md leading-7 text-gray-700 mb-6">
-          ما یک تیم پرانرژی و عاشق نوآوری هستیم که با هدف ارائه تجربه‌ای بی‌نظیر از خرید آنلاین این فروشگاه
-          رو راه انداختیم. از طراحی‌های خاصمون گرفته تا انتخاب محصولات با کیفیت، همه چیز رو با عشق انجام
-          می‌دیم تا شما با لبخند خرید کنید.
-        </p>
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="prose dark:prose-invert max-w-none"
+        >
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
+            فروشگاه ما با بیش از ۱۰ سال تجربه در زمینه فروش محصولات با کیفیت، همواره تلاش کرده است تا بهترین خدمات را به مشتریان خود ارائه دهد. ما معتقدیم که رضایت مشتری، کلید موفقیت ماست.
+          </p>
 
-        <h2 className="text-2xl font-semibold text-sky-600 mb-4">مأموریت ما</h2>
-        <p className="text-md leading-7 text-gray-700 mb-6">
-          ما تلاش می‌کنیم تا خرید آنلاین رو نه‌تنها ساده، بلکه لذت‌بخش کنیم. پشتیبانی سریع، ارسال به‌موقع و
-          محصولات با کیفیت از ارزش‌های اصلی ماست.
-        </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 my-12">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl"
+            >
+              <Users className="w-12 h-12 text-primary mb-3" />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">۱۰۰۰+ مشتری</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 text-center">مشتریان راضی</p>
+            </motion.div>
 
-        <h2 className="text-2xl font-semibold text-sky-600 mb-4">ارزش‌های ما</h2>
-        <ul className="list-disc list-inside text-gray-700 space-y-2">
-          <li>اعتماد و صداقت با مشتری</li>
-          <li>نوآوری و طراحی خلاق</li>
-          <li>تمرکز روی تجربه کاربری</li>
-          <li>پاسخگویی و پشتیبانی سریع</li>
-        </ul>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl"
+            >
+              <Award className="w-12 h-12 text-primary mb-3" />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">۱۰ سال تجربه</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 text-center">در صنعت فروش</p>
+            </motion.div>
 
-        <div className="mt-10 text-center">
-          <motion.img
-            src="/team-illustration.png"
-            alt="تیم ما"
-            className="mx-auto w-60 md:w-80 drop-shadow-lg"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          />
-          <p className="text-sm text-gray-500 mt-3">ما عاشق کاری هستیم که انجام می‌دیم 💙</p>
-        </div>
-      </motion.div>
-    </div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl"
+            >
+              <Heart className="w-12 h-12 text-primary mb-3" />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">رضایت ۹۸٪</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 text-center">از خدمات ما</p>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl"
+            >
+              <ShoppingBag className="w-12 h-12 text-primary mb-3" />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">۵۰۰+ محصول</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 text-center">با کیفیت بالا</p>
+            </motion.div>
+          </div>
+
+          <div className="mt-12 space-y-6">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">ماموریت ما</h2>
+            <p className="text-gray-700 dark:text-gray-300">
+              ما متعهد به ارائه بهترین محصولات با قیمت‌های مناسب و خدمات پس از فروش عالی هستیم. هدف ما ایجاد تجربه خرید لذت‌بخش برای همه مشتریان است.
+            </p>
+
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">چشم‌انداز ما</h2>
+            <p className="text-gray-700 dark:text-gray-300">
+              ما در تلاش هستیم تا به یکی از معتبرترین فروشگاه‌های آنلاین در کشور تبدیل شویم و استانداردهای جدیدی را در صنعت خرده‌فروشی تعریف کنیم.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 }

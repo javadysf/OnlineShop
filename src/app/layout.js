@@ -1,40 +1,23 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar/Navbar";
-import MainSideBar from "@/components/common/SideBars/MainSidebar/MainSideBar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Online Shop",
-  description: "Online Selling",
+  title: "پخش‌شاپ",
+  description: "فروشگاه آنلاین محصولات",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
-      <body
-        className={`antialiased`}
-      >
-        <div className="flex font-nazanin flex-col">
-        <Navbar/>
-        <span className="flex h-screen p-1 gap-2">
-        {/* <MainSideBar/> */}
-        <span className="bg-sky-100 w-full p-2 rounded-lg h-fit">
-
-        {children}
-        </span>
-        </span>
-        </div>
+      <body className={`${inter.className} bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200`}>
+        <Navbar />
+        <main className="container mx-auto px-4 py-8">
+          {children}
+        </main>
       </body>
     </html>
   );
-}
+} 
