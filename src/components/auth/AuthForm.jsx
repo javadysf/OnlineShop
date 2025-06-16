@@ -8,6 +8,9 @@ import useAuthStore from '@/store/authStore';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { Eye, EyeOff } from 'lucide-react';
+import DatePicker from 'react-multi-date-picker';
+import persian from 'react-date-object/calendars/persian';
+import persian_fa from 'react-date-object/locales/persian_fa';
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -17,7 +20,8 @@ const AuthForm = () => {
     email: '',
     password: '',
     phone: '',
-    address: ''
+    address: '',
+    birthDate: null
   });
   const [formErrors, setFormErrors] = useState({});
   const { login, register, isLoading, error } = useAuthStore();
@@ -37,6 +41,17 @@ const AuthForm = () => {
       }
       if (!formData.address.trim()) {
         errors.address = 'آدرس الزامی است';
+      }
+      if (!formData.birthDate) {
+        errors.birthDate = 'تاریخ تولد الزامی است';
+      } else {
+        // بررسی سن کاربر (حداقل 13 سال)
+        const birthDate = new Date(formData.birthDate);
+        const today = new Date();
+        const age = today.getFullYear() - birthDate.getFullYear();
+        if (age < 13) {
+          errors.birthDate = 'سن شما باید حداقل 13 سال باشد';
+        }
       }
     }
 
@@ -62,6 +77,19 @@ const AuthForm = () => {
     // پاک کردن خطای فیلد وقتی کاربر شروع به تایپ می‌کند
     if (formErrors[name]) {
       setFormErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const handleDateChange = (date) => {
+    if (date) {
+      // تبدیل تاریخ شمسی به میلادی برای ذخیره در دیتابیس
+      const gregorianDate = date.convert('gregorian').format('YYYY-MM-DD');
+      setFormData(prev => ({ ...prev, birthDate: gregorianDate }));
+    } else {
+      setFormData(prev => ({ ...prev, birthDate: null }));
+    }
+    if (formErrors.birthDate) {
+      setFormErrors(prev => ({ ...prev, birthDate: '' }));
     }
   };
 
@@ -143,6 +171,23 @@ const AuthForm = () => {
               />
               {formErrors.address && (
                 <p className="text-red-500 text-sm mt-1">{formErrors.address}</p>
+              )}
+            </div>
+
+            <div>
+              <DatePicker
+                calendar={persian}
+                locale={persian_fa}
+                calendarPosition="bottom-right"
+                onChange={handleDateChange}
+                value={formData.birthDate}
+                inputClass={`w-full p-2 border rounded-md ${formErrors.birthDate ? 'border-red-500' : 'border-gray-300'}`}
+                placeholder="تاریخ تولد"
+                format="YYYY/MM/DD"
+                maxDate={new Date()}
+              />
+              {formErrors.birthDate && (
+                <p className="text-red-500 text-sm mt-1">{formErrors.birthDate}</p>
               )}
             </div>
           </>

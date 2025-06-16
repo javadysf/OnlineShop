@@ -21,83 +21,81 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60 bg-gradient-to-r from-amber-100/70 dark:from-amber-900/70 via-amber-50/30 dark:via-gray-900 to-amber-100/70 dark:to-amber-900/70">
-      <div className="container flex h-16 items-center justify-between">
+    <nav className="sticky top-0 z-50 w-full border-b border-orange-300 dark:border-orange-900 bg-orange-100/90 dark:bg-orange-900/90 backdrop-blur-lg shadow-md">
+      <div className="container flex h-16 items-center justify-between px-2 md:px-0">
         {/* لوگو */}
-        <Link href="/" className="text-2xl font-bold text-primary">🛍️ فروشگاه من</Link>
-
-        {/* دکمه منو موبایل */}
-        <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
+        <Link href="/" className="flex items-center gap-2 text-3xl font-black text-sky-400 hover:text-sky-500 transition">
+          <span className="rounded-full bg-amber-100 p-2 text-3xl text-white shadow-md">🛍️</span>
+          <span className="hidden sm:inline text-orange-500  dark:text-sky-300">پخش و پلا</span>
+        </Link>
 
         {/* منو دسکتاپ */}
-        <ul className="hidden md:flex space-x-6 text-foreground text-lg font-medium rtl:space-x-reverse">
-          <li className="hover:text-primary transition"><Link href="/">خانه</Link></li>
-          <li className="hover:text-primary transition"><Link href="/ContactUs">تماس با ما</Link></li>
-          <li className="hover:text-primary transition"><Link href="/AboutUs">درباره ما</Link></li>
-          <li className="hover:text-primary transition"><Link href="/shop">خرید</Link></li>
+        <ul className="hidden md:flex items-center gap-2 lg:gap-6 text-amber-800 dark:text-sky-200 text-xl font-medium">
+          <li><Link href="/" className="px-3 py-2 rounded-lg hover:bg-sky-50 dark:hover:bg-gray-800 transition">خانه</Link></li>
+          <li><Link href="/shop" className="px-3 py-2 rounded-lg hover:bg-sky-50 dark:hover:bg-gray-800 transition">خرید</Link></li>
+          <li><Link href="/ContactUs" className="px-3 py-2 rounded-lg hover:bg-sky-50 dark:hover:bg-gray-800 transition">تماس با ما</Link></li>
+          <li><Link href="/AboutUs" className="px-3 py-2 rounded-lg hover:bg-sky-50 dark:hover:bg-gray-800 transition">درباره ما</Link></li>
           {user ? (
             <>
-              <li className="hover:text-primary transition">
-                <Link href="/profile" className="flex items-center gap-1">
+              <li>
+                <Link href="/profile" className="flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-sky-50 dark:hover:bg-gray-800 transition">
                   <User size={20} />
-                  {user.name}
+                  <span className="font-bold">{user.name}</span>
                 </Link>
               </li>
-              <li className="hover:text-primary transition">
-                <button onClick={handleLogout} className="flex items-center gap-1">
+              <li>
+                <button onClick={handleLogout} className="flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-red-50 dark:hover:bg-gray-800 text-red-600 transition">
                   <LogOut size={20} />
                   خروج
                 </button>
               </li>
             </>
           ) : (
-            <li className="hover:text-primary transition">
-              <Link href="/login">ورود / ثبت نام</Link>
-            </li>
+            <li><Link href="/login" className="px-3 py-2 rounded-lg bg-sky-400 text-white hover:bg-sky-500 transition shadow">ورود / ثبت نام</Link></li>
           )}
         </ul>
 
         {/* آیکون‌های سمت راست */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-2 lg:gap-4">
           <ThemeToggle />
           <CartButton />
         </div>
+
+        {/* دکمه منو موبایل */}
+        <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2 rounded-lg hover:bg-sky-100 dark:hover:bg-gray-800 transition">
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
 
       {/* منوی کشویی موبایل */}
       <div
-        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-          menuOpen ? 'max-h-96 py-4 px-6' : 'max-h-0'
-        }`}
+        className={`md:hidden fixed top-0 right-0 left-0 z-40 bg-orange-50/95 dark:bg-orange-900/95 shadow-lg transition-all duration-300 ease-in-out ${menuOpen ? 'max-h-[400px] py-6 px-6' : 'max-h-0 py-0 px-0 overflow-hidden'}`}
+        style={{ borderBottomLeftRadius: '1.5rem', borderBottomRightRadius: '1.5rem' }}
       >
-        <ul className="flex flex-col space-y-4 text-foreground text-base font-medium">
-          <li><Link href="/" onClick={() => setMenuOpen(false)}>خانه</Link></li>
-          <li><Link href="/contact" onClick={() => setMenuOpen(false)}>تماس با ما</Link></li>
-          <li><Link href="/about" onClick={() => setMenuOpen(false)}>درباره ما</Link></li>
-          <li><Link href="/products" onClick={() => setMenuOpen(false)}>خرید</Link></li>
+        <ul className="flex flex-col gap-4 text-sky-700 dark:text-sky-200 text-base font-medium">
+          <li><Link href="/" onClick={() => setMenuOpen(false)} className="block px-3 py-2 rounded-lg hover:bg-sky-50 dark:hover:bg-gray-800 transition">خانه</Link></li>
+          <li><Link href="/shop" onClick={() => setMenuOpen(false)} className="block px-3 py-2 rounded-lg hover:bg-sky-50 dark:hover:bg-gray-800 transition">خرید</Link></li>
+          <li><Link href="/ContactUs" onClick={() => setMenuOpen(false)} className="block px-3 py-2 rounded-lg hover:bg-sky-50 dark:hover:bg-gray-800 transition">تماس با ما</Link></li>
+          <li><Link href="/AboutUs" onClick={() => setMenuOpen(false)} className="block px-3 py-2 rounded-lg hover:bg-sky-50 dark:hover:bg-gray-800 transition">درباره ما</Link></li>
           {user ? (
             <>
               <li>
-                <Link href="/profile" onClick={() => setMenuOpen(false)} className="flex items-center gap-1">
+                <Link href="/profile" onClick={() => setMenuOpen(false)} className="flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-sky-50 dark:hover:bg-gray-800 transition">
                   <User size={20} />
-                  {user.name}
+                  <span className="font-bold">{user.name}</span>
                 </Link>
               </li>
               <li>
-                <button onClick={() => { handleLogout(); setMenuOpen(false); }} className="flex items-center gap-1">
+                <button onClick={() => { handleLogout(); setMenuOpen(false); }} className="flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-red-50 dark:hover:bg-gray-800 text-red-600 transition">
                   <LogOut size={20} />
                   خروج
                 </button>
               </li>
             </>
           ) : (
-            <li><Link href="/login" onClick={() => setMenuOpen(false)}>ورود / ثبت نام</Link></li>
+            <li><Link href="/login" onClick={() => setMenuOpen(false)} className="block px-3 py-2 rounded-lg bg-sky-400 text-white hover:bg-sky-500 transition shadow">ورود / ثبت نام</Link></li>
           )}
-          <li className="flex items-center gap-4">
+          <li className="flex items-center gap-4 mt-2">
             <ThemeToggle />
             <CartButton />
           </li>

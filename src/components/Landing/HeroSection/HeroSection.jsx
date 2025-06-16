@@ -14,25 +14,25 @@ const HeroSection = () => {
       ];
       const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <section className="bg-white dark:bg-gray-900 py-6 px-6 md:px-16">
+    <section className="bg-orange-50/30 dark:bg-gray-900 py-2 px-3 md:px-16">
     <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row max-lg:flex-col items-center gap-10">
       
       {/* Left Side: Image + Text */}
       <div className="flex-1 text-center md:text-left space-y-4">
         <Image
-          src="/assets/pics/Hero.jpg" // تصویر اصلی که تولید کردیم
+          src="/assets/pics/Hero.jpg" // تصویر اصلی 
           alt="Happy grandfather and child"
           width={500}
-          height={30}
+          height={300}
           className="mx-auto md:mx-0 rounded-xl shadow-lg dark:shadow-gray-800"
         />
         <div className="flex w-full justify-evenly items-center">
 
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-500 dark:text-white">
-با لذت خرید کن!        </h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-rose-800 dark:text-white">
+        نامرتب، ولی خواستنی!     </h1>
       
         <Link href={"/shop"}>
-        <Button className="bg-orange-400 hover:bg-orange-300/90 text-white text-2xl font-semibold px-6 py-8 rounded-xl shadow dark:shadow-gray-800">
+        <Button className="bg-orange-400 hover:bg-orange-300/90 text-amber-100 text-2xl font-semibold px-6 py-8 rounded-xl shadow dark:shadow-gray-800">
           شروع خرید
         </Button>
         </Link>
